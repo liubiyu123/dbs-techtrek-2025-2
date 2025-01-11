@@ -5,10 +5,7 @@ const Landing = () => {
 		<div className="container">
 			<div className="banner-container">
 				<div className="banner">
-					<h2>It's time for some Cocktails</h2>
-					<Link to="/products">
-						<div className="btn">View Cocktails</div>
-					</Link>
+					<h2>Landing page</h2>
 				</div>
 			</div>
 		</div>
