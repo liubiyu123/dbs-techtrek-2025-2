@@ -13,6 +13,14 @@ const LandingPage = () => {
     cashBalance: 500
   });
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingRecord, setEditingRecord] = useState(null);
+
+  const handleEdit = (record) => {
+	setIsEditing(true)
+    setEditingRecord(record);
+    setIsModalVisible(true);
+  };
 
   useEffect(() => {
     const fetchCompanyData = async () => {
@@ -38,13 +46,13 @@ const LandingPage = () => {
   };
 
   const handleCancel = () => {
+	setIsEditing(false);
     setIsModalVisible(false);
   };
 
   const handleSubmit = async (values) => {
     try {
-      const token = localStorage.getItem('token');
-      await fetch('/api/requests', {
+      await fetch('', {
         method: 'POST',
         headers: {
         },
@@ -102,14 +110,14 @@ const LandingPage = () => {
 			}}
 		>     
 			<Modal
-			title="Create New Request"
-			open={isModalVisible}
-			onCancel={handleCancel}
-			footer={null}
+				title={isEditing ? "Edit Request" : "Create New Request"}
+				open={isModalVisible}
+				onCancel={handleCancel}
+				footer={null}
 			>
 				<RequestForm onSubmit={handleSubmit} onCancel={handleCancel} />
 			</Modal>
-          <RequestTable />
+          <RequestTable onEdit={handleEdit}/>
         </Card>
       </Content>
     </Layout>

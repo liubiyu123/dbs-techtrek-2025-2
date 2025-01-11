@@ -30,9 +30,9 @@ const RequestForm = ({ onCancel, onSubmit }) => {
       </Form.Item>
 
       <Form.Item
-        name="companyName"
-        label="Company Name"
-        rules={[{ required: true, message: 'Please enter company name' }]}
+        name="companyId"
+        label="Company ID"
+        rules={[{ required: true, message: 'Please enter company ID' }]}
       >
         <Input style={{ width: '100%' }} />
       </Form.Item>
