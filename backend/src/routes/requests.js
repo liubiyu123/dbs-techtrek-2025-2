@@ -5,12 +5,12 @@ const requestController = new RequestController()
 
 router.post('/create', requestController.createRequest)
 
-router.get('/company/', requestController.getAllCompanyRequests)
+router.get('/:companyId', requestController.getAllCompanyRequests)
 
-router.get('/company/:companyId', requestController.getCompanyRequests)
+router.get('/outstanding/:companyId', requestController.getOutstandingRequests)
 
-router.put('/company/:requestId', requestController.editCompanyRequest)
+router.put('/edit/:requestId', requestController.editCompanyRequest)
 
-router.delete('/company/:requestId', requestController.deleteCompanyRequest)
+router.delete('/:requestId', requestController.deleteCompanyRequest)
 
 export default router;

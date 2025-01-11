@@ -24,7 +24,7 @@ class RequestController {
   /***
    *  Get outstanding requests
    */
-  public getCompanyRequests = () => {
+  public getOutstandingRequests = () => {
     try{
       console.log("TEST")
     }catch (e) {

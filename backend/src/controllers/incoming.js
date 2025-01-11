@@ -1,19 +1,9 @@
-class RequestController {
-  /***
-   *  Create new company requests into outstandingRequests & requestReceived tables
-   */
-  public createRequest = () => {
-    try{
-      console.log("TEST")
-    }catch (e) {
-      console.log(e)
-    }
-  }
+class IncomingController {
 
   /***
-   *  Get all requests made by the company
+   *  Get all incoming requests by OTHER companies
    */
-  public getAllCompanyRequests = () => {
+  public getAllIncomingRequests = () => {
     try{
       console.log("TEST")
     }catch (e) {
