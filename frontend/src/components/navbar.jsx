@@ -51,10 +51,13 @@ const NavBar = () => {
           <Button danger type='primary' onClick={handleLogout}>
             <NavLink to='/'>Logout</NavLink>
           </Button>
+        <Button type = 'primary' style={{
+                }}>                
+                        <NavLink to="/Bidding-Window">Bidding Window</NavLink>
+        </Button>
         </div>
       </Header>
     </nav>
-  );
 };
 
 export default NavBar;

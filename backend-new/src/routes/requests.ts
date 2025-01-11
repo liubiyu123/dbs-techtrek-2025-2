@@ -12,7 +12,7 @@ router.get('/outstanding/:companyId', requestController.getOutstandingRequests)
 
 router.get('/incoming/:companyId', requestController.getIncomingRequests)
 
-// router.put('/incoming/update', requestController.editCompanyRequest)
+router.put('/incoming/update', requestController.updateCompanyRequest)
 //
 // router.put('/edit/:requestId', requestController.editCompanyRequest)
 //

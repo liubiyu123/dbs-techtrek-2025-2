@@ -4,6 +4,7 @@ import Login from "./Pages/Login";
 import Landing from "./Pages/Landing";
 import Requests from "./Pages/Requests";
 import Bidding from "./Pages/Bidding";
+import BiddingWindow from "./Pages/BiddingWindow";
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("token");
@@ -44,6 +45,14 @@ function App() {
         }
       />
       <Route path='*' element={<Navigate to='/' replace />} />
+        path="/bidding-window"
+        element={
+          <ProtectedRoute>
+            <BiddingWindow />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

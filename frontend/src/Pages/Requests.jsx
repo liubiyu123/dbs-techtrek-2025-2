@@ -1,8 +1,8 @@
 import NavBar from "../components/navbar";
 import React, { useState, useEffect } from 'react';
-import { Button, Tag, Table, Space, Popconfirm } from "antd";
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Alert } from "antd";
+import { Button, Tag, Table, Space, Popconfirm, Layout, Card, Typography} from "antd";
+const { Title, Text } = Typography;
 
 
 const Requests = () => {
@@ -24,7 +24,8 @@ const Requests = () => {
         
         setOverdueCount(count);
     };
-    
+    const company_id = localStorage.getItem('token');
+    console.log("requests for company: ", company_id)
     const data = [
         {
             key: '1',
@@ -46,7 +47,6 @@ const Requests = () => {
         },
     ];
     
-    
     //FUNCTIONS
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -67,36 +67,44 @@ const Requests = () => {
         onChange: onSelectChange,
     };
 
-    const handleAccept = async (key) => {
+    const handleAccept = async () => {
         try {
-            console.log("accepting:", selectedRowKeys)
-        //   const token = localStorage.getItem('token');
-        //   await fetch(`/api/requests/${key}`, {
-        //     method: 'DELETE',
-        //     headers: {
-        //       'Authorization': `Bearer ${token}`,
-        //       'Content-Type': 'application/json'
-        //     }
-        //   });
-        //   setData(data.filter(item => item.key !== key));
+            for (let i = 0; i < selectedRowKeys.length; i++) {
+                console.log("accepting request:", data[selectedRowKeys[i]-1]) //TODO: change to match the key
+                //TODO: Populate value with the correct request ID
+                let values = {
+
+                }
+                await fetch('/api/incoming/update', {
+                    method: 'PUT',
+                    headers: {
+                    },
+                    body: JSON.stringify(values)
+                });
+            }
+            
         } catch (error) {
-          console.error('Error accepting requests:', error);
+          console.error('Error accepting requests:', error); 
         }
     };
 
     
-    const handleReject = async (key) => {
+    const handleReject = async () => {
         try {
-            console.log("rejecting:", selectedRowKeys)
-        //   const token = localStorage.getItem('token');
-        //   await fetch(`/api/requests/${key}`, {
-        //     method: 'DELETE',
-        //     headers: {
-        //       'Authorization': `Bearer ${token}`,
-        //       'Content-Type': 'application/json'
-        //     }
-        //   });
-        //   setData(data.filter(item => item.key !== key));
+            for (let i = 0; i < selectedRowKeys.length; i++) {
+                console.log("rejecting request:", data[selectedRowKeys[i]-1]) //TODO: change to match the key
+                //TODO: Populate value with the correct request ID
+                let values = {
+
+                }
+                await fetch('/api/incoming/update', {
+                    method: 'PUT',
+                    headers: {
+                    },
+                    body: JSON.stringify(values)
+                });
+            }
+        
         } catch (error) {
           console.error('Error rejecting requests:', error);
         }
@@ -151,23 +159,30 @@ const Requests = () => {
 
     const hasSelected = selectedRowKeys.length > 0;
     return (
-        <div className="container">
+        <Layout>
+            <div className="container">
             <NavBar/>
-            <div className="banner-container">
-			{overdueCount > 0 && (
-				<Alert
-					message="Outstanding Requests"
-					description={`There are ${overdueCount} request(s) that have been outstanding for more than 7 days. Please review them.`}
-					type="warning"
-					showIcon
-					style={{ marginBottom: 16 }}
-					closable
-				/>
-			)}
-                <div className="banner">
-                    <h2>Request page</h2>
-                    <Table rowSelection={rowSelection} columns={columns} dataSource ={data}/>
-                </div>
+            
+            <Card 
+                style={{ 
+                    marginBottom: '24px',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                }}
+            >   
+                {overdueCount > 0 && (
+                <Alert
+                    message="Outstanding Requests"
+                    description={`There are ${overdueCount} request(s) that have been outstanding for more than 7 days. Please review them.`}
+                    type="warning"
+                    showIcon
+                    style={{ marginBottom: 16 }}
+                    closable
+                />
+                )}
+                <Title level={3}>Received Requests</Title>
+
+                <div className="banner-container">
+                <Table rowSelection={rowSelection} columns={columns} dataSource ={data}/>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-around',
@@ -198,7 +213,9 @@ const Requests = () => {
                     
                 </div>
             </div>
+            </Card>
         </div>
+        </Layout>
     );
 };
 
