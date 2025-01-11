@@ -36,3 +36,44 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* .header {
+  background: #fff;
+  padding: 0 50px;
+} */
+
+.card {
+  display: flex;
+  justify-content: center;
+}
+
+/* .logo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+} */
+
+/* Styling for the header */
+.header {
+  background-color: #f01714;
+  color: white;
+  text-align: center;
+  padding: 16px 0;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: inline-block;
+  margin-right: 16px;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2px;
+}
