@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Layout, Card, Typography, Row, Col, Button, Modal } from 'antd';
 import RequestTable from '../components/RequestTable';
 import RequestForm from '../components/RequestForm';
+import NavBar from '../components/navbar';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -67,6 +68,7 @@ const Landing = () => {
 
   return (
     <Layout>
+	  <NavBar/>
       <Content style={{ padding: '24px' }}>
         <Card 
           style={{ 
