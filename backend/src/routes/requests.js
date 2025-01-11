@@ -1,7 +1,7 @@
 import express from 'express';
 
 const router = express.Router();
-const requestController = new RequestController()
+// const requestController = new RequestController()
 
 router.post('/create', requestController.createRequest)
 

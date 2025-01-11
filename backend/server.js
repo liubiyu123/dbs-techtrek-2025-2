@@ -1,7 +1,13 @@
-import requestRoutes from './src/routes/requests'
-const express = require('express');
-const mongoose = require('mongoose');
-const app = require('./src/app');
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
+import router from './src/routes/requests.js'
+import mongoose from 'mongoose';
+import express from 'express'
+import app from './src/app.js'
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const app = require('./src/app');
 
 const PORT = 5001;
 
@@ -18,8 +24,8 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // app.use('/api/login', loginRoutes)
 // app.use('/api/account', accountRoutes)
-app.use('/api/requests', requestRoutes)
-app.use('/api/', requestRoutes)
+app.use('/api/requests', router)
+app.use('/api/', router)
 
 // Start the server
 app.listen(PORT, () => {

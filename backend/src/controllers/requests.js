@@ -1,10 +1,11 @@
-import Request from '../models/OutstandingRequest';
+import OutstandingRequest from '../models/OutstandingRequest';
 
 class RequestController {
+
   //  POST /create (create into outstanding requests & requests received - 4) 
   async createRequest(req, res) {
     try {
-      const request = new Request(req.body);
+      const request = new OutstandingRequest(req.body);
       const savedRequest = await request.save();
       res.status(201).json({ message: 'Request created successfully', data: savedRequest });
       
@@ -17,7 +18,7 @@ class RequestController {
   async getAllCompanyRequests(req, res) {
     try {
       const { companyId } = req.params;
-      const requests = await Request.find({ companyId });
+      const requests = await OutstandingRequest.find({ companyId });
       res.status(200).json({ data: requests });
 
     } catch (error) {
@@ -29,7 +30,7 @@ class RequestController {
   async getOutstandingRequests(req, res) {
     try {
       const { companyId } = req.params;
-      const requests = await Request.find({ companyId, status: 'outstanding' });
+      const requests = await OutstandingRequest.find({ companyId, status: 'outstanding' });
       res.status(200).json({ data: requests });
 
     } catch (error) {
@@ -41,7 +42,7 @@ class RequestController {
   async getIncomingRequests(req, res) {
     try {
       const { requestorCompanyId } = req.params;
-      const requests = await Request.find({ requestorCompanyId, type: 'incoming' });
+      const requests = await OutstandingRequest.find({ requestorCompanyId, type: 'incoming' });
       res.status(200).json({ data: requests });
 
     } catch (error) {
@@ -53,7 +54,7 @@ class RequestController {
   async editCompanyRequest(req, res) {
     try {
       const { id } = req.params;
-      const updatedRequest = await Request.findByIdAndUpdate(id, req.body, { new: true });
+      const updatedRequest = await OutstandingRequest.findByIdAndUpdate(id, req.body, { new: true });
 
       if (!updatedRequest) {
         return res.status(404).json({ message: 'Request not found' });
@@ -70,7 +71,7 @@ class RequestController {
   async deleteCompanyRequest(req, res) {
     try {
       const { id } = req.params;
-      const deletedRequest = await Request.findByIdAndDelete(id);
+      const deletedRequest = await OutstandingRequest.findByIdAndDelete(id);
 
       if (!deletedRequest) {
         return res.status(404).json({ message: 'Request not found' });
