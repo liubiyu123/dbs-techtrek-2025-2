@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Card, Typography, Row, Col } from 'antd';
+import { Layout, Card, Typography, Row, Col, Button, Modal } from 'antd';
 import RequestTable from '../components/RequestTable';
+import RequestForm from '../components/RequestForm';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -9,8 +10,9 @@ const LandingPage = () => {
   const [companyData, setCompanyData] = useState({
     companyName: 'Company A',
     carbonBalance: 100,
-    cashBalance:500
+    cashBalance: 500
   });
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
     const fetchCompanyData = async () => {
@@ -30,6 +32,30 @@ const LandingPage = () => {
 
     fetchCompanyData();
   }, []);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleSubmit = async (values) => {
+    try {
+      const token = localStorage.getItem('token');
+      await fetch('/api/requests', {
+        method: 'POST',
+        headers: {
+        },
+        body: JSON.stringify(values)
+      });
+      setIsModalVisible(false);
+      // You might want to refresh your RequestTable data here
+    } catch (error) {
+      console.error('Error creating request:', error);
+    }
+  };
 
   return (
     <Layout>
@@ -60,11 +86,29 @@ const LandingPage = () => {
         </Card>
 
         <Card 
-          title="Outstanding Requests" 
-          style={{ 
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-          }}
-        >
+			title={
+				<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+				<span>Outstanding Requests</span>
+				<Button 
+					type="primary" 
+					onClick={showModal}
+				>
+					Create Request
+				</Button>
+				</div>
+			}
+			style={{ 
+				boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+			}}
+		>     
+			<Modal
+			title="Create New Request"
+			open={isModalVisible}
+			onCancel={handleCancel}
+			footer={null}
+			>
+				<RequestForm onSubmit={handleSubmit} onCancel={handleCancel} />
+			</Modal>
           <RequestTable />
         </Card>
       </Content>
