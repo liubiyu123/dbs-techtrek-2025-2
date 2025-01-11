@@ -55,20 +55,14 @@ function Login() {
     //     alert("Invalid userID or password");
     //   }
     if (Number(values.userID) === 1 && values.password === "password") {
-		message.success("Login successful!");
-		const userID = Number(values.userID);
-		localStorage.setItem('token', userID);
-		navigate("/landing", { state: { userID } });
-	  } else {
-		message.error("Invalid userID or password");
-		alert("Invalid userID or password");
-	  }
-	} catch (error) {
-	  console.error("Login failed:", error);
-	  message.error("An error occurred while logging in. Please try again.");
-	} finally {
-	  setLoading(false);
-	}
+      message.success("Login successful!");
+      const userID = Number(values.userID);
+      localStorage.setItem("token", userID);
+      navigate("/landing", { state: { userID } });
+    } else {
+      message.error("Invalid userID or password");
+      alert("Invalid userID or password");
+    }
   };
 
   return (

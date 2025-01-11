@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Pages/Login";
 import Landing from "./Pages/Landing";
 import Requests from "./Pages/Requests";
+import BiddingWindow from "./Pages/BiddingWindow";
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('token');
@@ -31,6 +32,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Requests />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/bidding-window"
+        element={
+          <ProtectedRoute>
+            <BiddingWindow />
           </ProtectedRoute>
         }
       />

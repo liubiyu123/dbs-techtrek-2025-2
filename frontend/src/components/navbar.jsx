@@ -30,8 +30,14 @@ const NavBar = () => {
                     </Button>
 
                     <Button type = 'primary' style={{
+                    marginRight: '16px'
+
                 }}>                
                         <NavLink to="/Requests">Received Requests</NavLink>
+                    </Button>
+                    <Button type = 'primary' style={{
+                }}>                
+                        <NavLink to="/Bidding-Window">Bidding Window</NavLink>
                     </Button>
                 </div>
                 <div>
