@@ -54,4 +54,4 @@ const outstandingRequestSchema = new mongoose.Schema({
 
 const OutstandingRequest = mongoose.model('OutstandingRequest', outstandingRequestSchema);
 
-module.exports = OutstandingRequest;
+export default OutstandingRequest;

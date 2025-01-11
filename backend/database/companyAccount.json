@@ -1,0 +1,202 @@
+{
+    "companyaccount":[
+     {
+      "companyId": "1",
+      "companyName": "Kemmer, Cronin and Walter",
+      "activeAccount": "0",
+      "carbonBalance": "2147",
+      "cashBalance": "547973",
+      "createdDatetime": "2023-02-10 00:00:00",
+      "updatedDatetime": "2024-11-18 00:00:00"
+     },
+     {
+      "companyId": "2000",
+      "companyName": "TTTTTTTTTTTTTechtrek is here",
+      "activeAccount": "1",
+      "carbonBalance": "9999",
+      "cashBalance": "2026000",
+      "createdDatetime": "2025-01-11 10:00:00",
+      "updatedDatetime": "2025-01-11 10:00:00"
+     },
+     {
+      "companyId": "2025",
+      "companyName": "TechTrek 2025 Pte Ltd",
+      "activeAccount": "1",
+      "carbonBalance": "200",
+      "cashBalance": "150000",
+      "createdDatetime": "2025-01-11 09:00:00",
+      "updatedDatetime": "2025-01-11 09:00:00"
+     },
+     {
+      "companyId": "2027",
+      "companyName": "Senger LLC",
+      "activeAccount": "1",
+      "carbonBalance": "648",
+      "cashBalance": "959359",
+      "createdDatetime": "2024-08-30 00:00:00",
+      "updatedDatetime": "2024-11-19 00:00:00"
+     },
+     {
+      "companyId": "2028",
+      "companyName": "Conn - DuBuque",
+      "activeAccount": "0",
+      "carbonBalance": "295",
+      "cashBalance": "164535",
+      "createdDatetime": "2023-03-18 00:00:00",
+      "updatedDatetime": "2023-12-14 00:00:00"
+     },
+     {
+      "companyId": "2029",
+      "companyName": "Heathcote - Windler",
+      "activeAccount": "1",
+      "carbonBalance": "8124",
+      "cashBalance": "139228",
+      "createdDatetime": "2024-04-25 00:00:00",
+      "updatedDatetime": "2024-12-28 00:00:00"
+     },
+     {
+      "companyId": "2030",
+      "companyName": "Hand - Ledner",
+      "activeAccount": "0",
+      "carbonBalance": "9032",
+      "cashBalance": "650415",
+      "createdDatetime": "2024-11-08 00:00:00",
+      "updatedDatetime": "2024-11-15 00:00:00"
+     },
+     {
+      "companyId": "2031",
+      "companyName": "MacGyver Group",
+      "activeAccount": "0",
+      "carbonBalance": "3036",
+      "cashBalance": "524802",
+      "createdDatetime": "2023-10-14 00:00:00",
+      "updatedDatetime": "2024-12-22 00:00:00"
+     },
+     {
+      "companyId": "2032",
+      "companyName": "Rodriguez Inc",
+      "activeAccount": "1",
+      "carbonBalance": "6784",
+      "cashBalance": "897333",
+      "createdDatetime": "2023-02-18 00:00:00",
+      "updatedDatetime": "2024-07-01 00:00:00"
+     },
+     {
+      "companyId": "2033",
+      "companyName": "Gleason LLC",
+      "activeAccount": "1",
+      "carbonBalance": "1764",
+      "cashBalance": "657636",
+      "createdDatetime": "2023-01-13 00:00:00",
+      "updatedDatetime": "2024-12-28 00:00:00"
+     },
+     {
+      "companyId": "2034",
+      "companyName": "Mills Inc",
+      "activeAccount": "1",
+      "carbonBalance": "7867",
+      "cashBalance": "370155",
+      "createdDatetime": "2023-08-29 00:00:00",
+      "updatedDatetime": "2024-09-02 00:00:00"
+     },
+     {
+      "companyId": "2035",
+      "companyName": "Mayer, Haley and Stiedemann",
+      "activeAccount": "0",
+      "carbonBalance": "958",
+      "cashBalance": "759482",
+      "createdDatetime": "2024-10-19 00:00:00",
+      "updatedDatetime": "2024-11-08 00:00:00"
+     },
+     {
+      "companyId": "2036",
+      "companyName": "Gutmann - Langosh",
+      "activeAccount": "0",
+      "carbonBalance": "161",
+      "cashBalance": "165937",
+      "createdDatetime": "2024-09-07 00:00:00",
+      "updatedDatetime": "2024-11-21 00:00:00"
+     },
+     {
+      "companyId": "2037",
+      "companyName": "Hansen - Daugherty",
+      "activeAccount": "1",
+      "carbonBalance": "3434",
+      "cashBalance": "56068",
+      "createdDatetime": "2024-04-30 00:00:00",
+      "updatedDatetime": "2024-09-06 00:00:00"
+     },
+     {
+      "companyId": "2038",
+      "companyName": "Sanford - Bruen",
+      "activeAccount": "0",
+      "carbonBalance": "541",
+      "cashBalance": "201799",
+      "createdDatetime": "2024-06-29 00:00:00",
+      "updatedDatetime": "2024-03-05 00:00:00"
+     },
+     {
+      "companyId": "2039",
+      "companyName": "Haag and Sons",
+      "activeAccount": "1",
+      "carbonBalance": "1118",
+      "cashBalance": "252659",
+      "createdDatetime": "2024-03-01 00:00:00",
+      "updatedDatetime": "2025-01-07 17:49:43"
+     },
+     {
+      "companyId": "2040",
+      "companyName": "Hermiston, Hettinger and Streich",
+      "activeAccount": "1",
+      "carbonBalance": "7492",
+      "cashBalance": "849960",
+      "createdDatetime": "2023-04-09 00:00:00",
+      "updatedDatetime": "2024-09-23 00:00:00"
+     },
+     {
+      "companyId": "2041",
+      "companyName": "Price - Lemke",
+      "activeAccount": "1",
+      "carbonBalance": "2043",
+      "cashBalance": "419981",
+      "createdDatetime": "2023-07-26 00:00:00",
+      "updatedDatetime": "2024-12-10 00:00:00"
+     },
+     {
+      "companyId": "2042",
+      "companyName": "Emmerich - Langworth",
+      "activeAccount": "1",
+      "carbonBalance": "7116",
+      "cashBalance": "742714",
+      "createdDatetime": "2024-01-29 00:00:00",
+      "updatedDatetime": "2024-09-30 00:00:00"
+     },
+     {
+      "companyId": "2043",
+      "companyName": "Abbott - Hane",
+      "activeAccount": "1",
+      "carbonBalance": "4419",
+      "cashBalance": "487599",
+      "createdDatetime": "2024-07-04 00:00:00",
+      "updatedDatetime": "2024-08-11 00:00:00"
+     },
+     {
+      "companyId": "2044",
+      "companyName": "Koelpin LLC",
+      "activeAccount": "1",
+      "carbonBalance": "4708",
+      "cashBalance": "509389",
+      "createdDatetime": "2024-04-12 00:00:00",
+      "updatedDatetime": "2024-09-06 00:00:00"
+     },
+     {
+      "companyId": "2045",
+      "companyName": "Farrell, Collins and Windler",
+      "activeAccount": "1",
+      "carbonBalance": "1252",
+      "cashBalance": "277831",
+      "createdDatetime": "2023-07-21 00:00:00",
+      "updatedDatetime": "2024-08-01 00:00:00"
+     }
+    ]
+    }
