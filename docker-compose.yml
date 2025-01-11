@@ -1,0 +1,43 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend
+    restart: no
+    ports:
+      - 3000:3000
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  backend:
+    container_name: backend
+#    env_file:
+#      - ./backend/.env
+#      - .env
+    build:
+      context: backend
+      args:
+        NODE_PORT: 5001
+    ports:
+      - 5001:5001
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/backend # bind mount for dev hot-reload
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://backend:5001/api/status/health"]
+#      interval: 5s
+#      timeout: 25s
+#      retries: 3
+  mongodb:
+    container_name: asr-mongo-database
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data: {}
