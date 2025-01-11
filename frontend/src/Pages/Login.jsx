@@ -30,7 +30,7 @@ function Login() {
     if (Number(values.userID) === 1 && values.password === "password") {
 		message.success("Login successful!");
 		const userID = Number(values.userID);
-		localStorage.setItem('token', 'demo-token');
+		localStorage.setItem('token', userID);
 		navigate("/landing", { state: { userID } });
 	  } else {
 		message.error("Invalid userID or password");
