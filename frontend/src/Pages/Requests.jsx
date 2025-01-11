@@ -1,18 +1,34 @@
 import NavBar from "../components/navbar";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Tag, Table, Space, Popconfirm } from "antd";
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Alert } from "antd";
 
 
 const Requests = () => {
     
+    const [overdueCount, setOverdueCount] = useState(0);    
+	
+	useEffect(() => {
+        checkOverdueRequests();
+    }, []);
+
+    const checkOverdueRequests = () => {
+        const currentDate = new Date();
+        const sevenDaysAgo = new Date(currentDate - 7 * 24 * 60 * 60 * 1000);
+        
+        const count = data.reduce((acc, request) => {
+            const requestDate = new Date(request.requestDate);
+            return requestDate < sevenDaysAgo ? acc + 1 : acc;
+        }, 0);
+        
+        setOverdueCount(count);
+    };
     
-    
-    //TODO: LOAD DATA AND SHOW POPUP IF ANY ARE OVERDUE
     const data = [
         {
             key: '1',
-            requestDate: '2025-01-11',
+            requestDate: '2023-01-11',
             companyName: 'Company A',
             carbonUnitPrice: 25.00,
             carbonQuantity: 100,
@@ -21,7 +37,7 @@ const Requests = () => {
         },
         {
             key: '2',
-            requestDate: '2025-01-10',
+            requestDate: '2024-01-10',
             companyName: 'Company B',
             carbonUnitPrice: 30.00,
             carbonQuantity: 50,
@@ -138,6 +154,16 @@ const Requests = () => {
         <div className="container">
             <NavBar/>
             <div className="banner-container">
+			{overdueCount > 0 && (
+				<Alert
+					message="Outstanding Requests"
+					description={`There are ${overdueCount} request(s) that have been outstanding for more than 7 days. Please review them.`}
+					type="warning"
+					showIcon
+					style={{ marginBottom: 16 }}
+					closable
+				/>
+			)}
                 <div className="banner">
                     <h2>Request page</h2>
                     <Table rowSelection={rowSelection} columns={columns} dataSource ={data}/>
