@@ -7,7 +7,6 @@ import Requests from './Pages/Requests';
 function App() {
   return (
     <>
-    <p>test</p>
     <Routes>
        <Route path="/" element={<Login/>} />
        <Route path="/landing" element={<Landing/>} />
