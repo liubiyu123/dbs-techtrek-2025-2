@@ -11,6 +11,8 @@ router.get('/outstanding/:companyId', requestController.getOutstandingRequests)
 
 router.get('/incoming/:companyId', requestController.getIncomingRequests)
 
+router.put('/incoming/update', requestController.editCompanyRequest)
+
 router.put('/edit/:requestId', requestController.editCompanyRequest)
 
 router.delete('/:requestId', requestController.deleteCompanyRequest)
