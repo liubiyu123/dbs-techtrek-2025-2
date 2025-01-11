@@ -1,0 +1,17 @@
+/login
+
+/account
+    GET /balance
+    POST /balance
+
+/requests
+    GET /all (Get all requests)
+    PUT /accept/:id (accept)
+    PUT /reject/:id (reject)
+    DELETE /:id (delete)
+    
+    GET /companies/:id (from other companies)
+
+/requests
+
+/
