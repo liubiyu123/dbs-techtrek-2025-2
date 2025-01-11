@@ -5,7 +5,9 @@ import {Request, Response} from "express";
 class RequestController {
   //  POST /create (create into outstanding requests & requests received - 4) 
   public createRequest = async (req: Request, res: Response) => {
+    const data = req.body
     try {
+      console.log(`Creating request with ${data}`)
       // const request = new OutstandingRequest(req.body);
       // const savedRequest = await request.save();
       res.status(201).json({ message: 'Request created successfully', data: req.body });
@@ -17,8 +19,9 @@ class RequestController {
   // GET /:companyId (Get ALL for YOUR requests)
   public getAllCompanyRequests = async (req: Request, res: Response) => {
     try {
-      const { companyId } = req.params;
-      const requests = await OutstandingRequest.find({ companyId });
+      const { userId } = req.params;
+      console.log(`Getting all outstanding requests for ${userId}`)
+      const requests = await OutstandingRequest.find({ userId });
       res.status(200).json({ data: requests });
 
     } catch (error) {

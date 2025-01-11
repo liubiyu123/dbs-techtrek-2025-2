@@ -88,7 +88,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
     //   { expiresIn: "1d" }
     // );
 
-    const token = "JWT_SECRET"; // Mocked JWT token for testing
+    const token = "2ac6600472994bfc6c8742a6fca640d5f6121a2a452739aed731f028b4afee54"; // Mocked JWT token for testing
 
     res.status(200).json({
       status: 200,

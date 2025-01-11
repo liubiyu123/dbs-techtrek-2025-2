@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-// import userRoutes from "./src/routes/users";  // If using ES Modules (with "type": "module" in package.json)
+import accountRoutes from "./routes/account";  // If using ES Modules (with "type": "module" in package.json)
 import requestRoutes from "./routes/requests";  // If using ES Modules (with "type": "module" in package.json)
 // const express = require('express'); // If using CommonJS syntax (default)
 import { loginUser } from "./controllers/auth";
@@ -21,8 +21,9 @@ dotenv.config();
 app.use(express.json());
 
 // Routes
-//app.post("/auth/register", registerUser);
 app.post("/auth/login", loginUser);
+app.use("/api/requests", requestRoutes)
+app.use("/api/account", accountRoutes)
 
 // Connect to Database and Start Server
 app.listen(port, async () => {

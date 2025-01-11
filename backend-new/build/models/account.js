@@ -33,11 +33,11 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = __importStar(require("mongoose"));
-var AccountSchema = new mongoose_1.Schema({
+const mongoose_1 = __importStar(require("mongoose"));
+const AccountSchema = new mongoose_1.Schema({
     companyId: { type: Number, required: true },
     companyName: { type: String },
     activeAccount: { type: Number }
 });
-var AccountModel = mongoose_1.default.model('AccountModel', AccountSchema);
+const AccountModel = mongoose_1.default.model('AccountModel', AccountSchema);
 exports.default = AccountModel;

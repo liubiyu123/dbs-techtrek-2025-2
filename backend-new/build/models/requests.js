@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose = require('mongoose');
-var outstandingRequestSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const outstandingRequestSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: true,
@@ -49,8 +49,8 @@ var outstandingRequestSchema = new mongoose.Schema({
     updatedDatetime: {
         type: Date,
         default: Date.now,
-        set: function () { return Date.now(); },
+        set: () => Date.now(),
     },
 });
-var OutstandingRequest = mongoose.model('OutstandingRequest', outstandingRequestSchema);
+const OutstandingRequest = mongoose.model('OutstandingRequest', outstandingRequestSchema);
 exports.default = OutstandingRequest;

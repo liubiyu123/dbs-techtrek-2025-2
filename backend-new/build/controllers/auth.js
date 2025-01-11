@@ -85,7 +85,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         //   process.env.JWT_SECRET as string,
         //   { expiresIn: "1d" }
         // );
-        const token = "JWT_SECRET"; // Mocked JWT token for testing
+        const token = "2ac6600472994bfc6c8742a6fca640d5f6121a2a452739aed731f028b4afee54"; // Mocked JWT token for testing
         res.status(200).json({
             status: 200,
             success: true,
