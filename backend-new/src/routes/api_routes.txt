@@ -1,0 +1,24 @@
+BE API Routes
+
+/login - eunice
+   POST / (login)
+
+/account/:id - eunice
+    GET / (Get account balance)
+    PUT /update (Update account balance)
+
+/requests
+    POST /create (create into outstanding requests & requests received - 4)
+
+    GET /company/ (Get ALL for YOUR requests)
+    GET /company/:companyId (Display outstanding of YOUR requests - 3)
+    PUT /company/:requestId (Edit user’s company request)
+    DELETE /company/:requestId (Delete user’s company request)
+
+    GET /incoming/ (Get ALL for OTHER companies)
+    GET /incoming/:companyId (View requests made from OTHER companies)
+    PUT /incoming/update (Accept/ Reject requests, DEFAULT: Pending)
+
+/alerts
+    GET (get all alerts)
+    POST /create (create alert for outstanding req)
