@@ -1,8 +1,9 @@
+import requestRoutes from './src/routes/requests'
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
+const app = require('./src/app');
 
-const PORT = 5000;
+const PORT = 5001;
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -15,10 +16,10 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected!'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
 
-// Define a simple route
-app.get('/', (req, res) => {
-  res.send('Hello, Express with Mongoose!');
-});
+// app.use('/api/login', loginRoutes)
+// app.use('/api/account', accountRoutes)
+app.use('/api/requests', requestRoutes)
+app.use('/api/', requestRoutes)
 
 // Start the server
 app.listen(PORT, () => {
