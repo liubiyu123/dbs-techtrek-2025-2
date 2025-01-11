@@ -3,25 +3,24 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Pages/Login";
 import Landing from "./Pages/Landing";
 import Requests from "./Pages/Requests";
-import Bidding from "./Pages/Bidding";
 import BiddingWindow from "./Pages/BiddingWindow";
 
 const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem("token");
-
+  const isAuthenticated = localStorage.getItem('token');
+  
   if (!isAuthenticated) {
-    return <Navigate to='/' replace />;
+    return <Navigate to="/" replace />;
   }
-
+  
   return children;
 };
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Login />} />
+      <Route path="/" element={<Login />} />
       <Route
-        path='/landing'
+        path="/landing"
         element={
           <ProtectedRoute>
             <Landing />
@@ -29,7 +28,7 @@ function App() {
         }
       />
       <Route
-        path='/requests'
+        path="/requests"
         element={
           <ProtectedRoute>
             <Requests />
@@ -37,14 +36,6 @@ function App() {
         }
       />
       <Route
-        path='/bidding'
-        element={
-          <ProtectedRoute>
-            <Bidding />
-          </ProtectedRoute>
-        }
-      />
-      <Route path='*' element={<Navigate to='/' replace />} />
         path="/bidding-window"
         element={
           <ProtectedRoute>
