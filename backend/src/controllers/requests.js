@@ -24,9 +24,9 @@ class RequestController {
   }
 
   /***
-   *  Get outstanding requests
+   *  Get incoming requests
    */
-  public getOutstandingRequests = () => {
+  public getIncomingRequests = () => {
     try{
       console.log("TEST")
     }catch (e) {
