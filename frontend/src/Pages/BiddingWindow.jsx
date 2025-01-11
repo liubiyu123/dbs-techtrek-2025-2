@@ -6,7 +6,37 @@ const { Content } = Layout;
 const { Title } = Typography;
 
 const BiddingWindow = () => {
-  const [bids, setBids] = useState([
+const [bids, setBids] = useState([
+    {
+        key: '1',
+        bidDeadline: '2025-01-11 23:59:59',
+        companyName: 'Company B',
+        carbonBidUnitPrice: 28.50,
+        carbonBidQuantity: 150,
+        bidStatus: 'Open',
+        bidType: 'Buy',
+        auctionStyle: 'Reverse'
+    },
+    {
+        key: '2',
+        bidDeadline: '2025-01-11 23:59:59',
+        companyName: 'Company c',
+        carbonBidUnitPrice: 25.75,
+        carbonBidQuantity: 200,
+        bidStatus: 'Open',
+        bidType: 'Sell',
+        auctionStyle: 'Reverse'
+    },
+    {
+        key: '3',
+        bidDeadline: '2025-01-11 23:59:59',
+        companyName: 'Company D',
+        carbonBidUnitPrice: 30.00,
+        carbonBidQuantity: 75,
+        bidStatus: 'Closed',
+        bidType: 'Buy',
+        auctionStyle: 'Reverse'
+    },
 
   ]);
   const [loading, setLoading] = useState(false);
