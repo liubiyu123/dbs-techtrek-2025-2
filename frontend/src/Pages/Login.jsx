@@ -46,13 +46,10 @@ function Login() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Header className='header'>
-        <div className='logo' />
-        Carbon Credit Trading Platform
-      </Header>
-      <Content style={{ padding: "50px" }}>
+      <Header className='header'>Carbon Credit Trading Platform</Header>
+      <Content className='login' style={{ padding: "50px" }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Card>
+          <Card style={{ Height: "200px" }}>
             <Form name='loginForm' onFinish={onFinish}>
               <Form.Item
                 label='userID'
