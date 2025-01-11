@@ -45,22 +45,28 @@ var RequestController = /** @class */ (function () {
         var _this = this;
         //  POST /create (create into outstanding requests & requests received - 4) 
         this.createRequest = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var request, savedRequest, error_1;
             return __generator(this, function (_a) {
-                try {
-                    // const request = new OutstandingRequest(req.body);
-                    // const savedRequest = await request.save();
-                    // res.status(201).json({ message: 'Request created successfully', data: savedRequest });
-                    res.status(201).json({ message: "test" });
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        request = new requests_1.default(req.body);
+                        return [4 /*yield*/, request.save()];
+                    case 1:
+                        savedRequest = _a.sent();
+                        res.status(201).json({ message: 'Request created successfully', data: savedRequest });
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _a.sent();
+                        res.status(500).json({ message: 'Failed to create request', error: error_1 });
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
-                catch (error) {
-                    res.status(500).json({ message: 'Failed to create request', error: error });
-                }
-                return [2 /*return*/];
             });
         }); };
         // GET /:companyId (Get ALL for YOUR requests)
         this.getAllCompanyRequests = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var companyId, requests, error_1;
+            var companyId, requests, error_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -72,8 +78,8 @@ var RequestController = /** @class */ (function () {
                         res.status(200).json({ data: requests });
                         return [3 /*break*/, 3];
                     case 2:
-                        error_1 = _a.sent();
-                        res.status(500).json({ message: 'Failed to fetch requests', error: error_1 });
+                        error_2 = _a.sent();
+                        res.status(500).json({ message: 'Failed to fetch requests', error: error_2 });
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -81,7 +87,7 @@ var RequestController = /** @class */ (function () {
         }); };
         // GET /outstanding/:companyId (Display outstanding of YOUR requests - 3)
         this.getOutstandingRequests = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var companyId, requests, error_2;
+            var companyId, requests, error_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -93,8 +99,8 @@ var RequestController = /** @class */ (function () {
                         res.status(200).json({ data: requests });
                         return [3 /*break*/, 3];
                     case 2:
-                        error_2 = _a.sent();
-                        res.status(500).json({ message: 'Failed to fetch outstanding requests', error: error_2 });
+                        error_3 = _a.sent();
+                        res.status(500).json({ message: 'Failed to fetch outstanding requests', error: error_3 });
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -102,7 +108,7 @@ var RequestController = /** @class */ (function () {
         }); };
         // GET /incoming/:companyId (Display incoming of OTHER requests - 3)
         this.getIncomingRequests = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var requestorCompanyId, requests, error_3;
+            var requestorCompanyId, requests, error_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -114,8 +120,8 @@ var RequestController = /** @class */ (function () {
                         res.status(200).json({ data: requests });
                         return [3 /*break*/, 3];
                     case 2:
-                        error_3 = _a.sent();
-                        res.status(500).json({ message: 'Failed to fetch incoming requests', error: error_3 });
+                        error_4 = _a.sent();
+                        res.status(500).json({ message: 'Failed to fetch incoming requests', error: error_4 });
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -123,7 +129,7 @@ var RequestController = /** @class */ (function () {
         }); };
         // PUT /edit/:requestId (Edit user’s company request)
         this.editCompanyRequest = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var id, updatedRequest, error_4;
+            var id, updatedRequest, error_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -138,8 +144,8 @@ var RequestController = /** @class */ (function () {
                         res.status(200).json({ message: 'Request updated successfully', data: updatedRequest });
                         return [3 /*break*/, 3];
                     case 2:
-                        error_4 = _a.sent();
-                        res.status(500).json({ message: 'Failed to update request', error: error_4 });
+                        error_5 = _a.sent();
+                        res.status(500).json({ message: 'Failed to update request', error: error_5 });
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -147,7 +153,7 @@ var RequestController = /** @class */ (function () {
         }); };
         // DELETE /company/:requestId (Delete user’s company request)
         this.deleteCompanyRequest = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
-            var id, deletedRequest, error_5;
+            var id, deletedRequest, error_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -162,14 +168,37 @@ var RequestController = /** @class */ (function () {
                         res.status(200).json({ message: 'Request deleted successfully' });
                         return [3 /*break*/, 3];
                     case 2:
-                        error_5 = _a.sent();
-                        res.status(500).json({ message: 'Failed to delete request', error: error_5 });
+                        error_6 = _a.sent();
+                        res.status(500).json({ message: 'Failed to delete request', error: error_6 });
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
             });
         }); };
-        // PUT /incoming/update (Accept/ Reject requests, DEFAULT: Pending)
+        // PUT /incoming/update/:requestId (Accept/ Reject requests, DEFAULT: Pending)
+        this.updateCompanyRequest = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var requestId, updatedRequest, error_7;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        requestId = req.body.requestId;
+                        return [4 /*yield*/, requests_1.default.findByIdAndUpdate(requestId)];
+                    case 1:
+                        updatedRequest = _a.sent();
+                        if (!updatedRequest) {
+                            res.status(404).json({ message: 'Request does not exist.' });
+                        }
+                        res.status(200).json({ message: 'Request updated successfully', data: updatedRequest });
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_7 = _a.sent();
+                        res.status(500).json({ message: 'Failed to delete request', error: error_7 });
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); };
     }
     return RequestController;
 }());

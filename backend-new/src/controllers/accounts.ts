@@ -1,7 +1,7 @@
 import OutstandingRequest from '../models/requests';
 
 import {Request, Response} from "express";
-import AccountModel from "@models/account";
+import AccountModel from "../models/account";
 
 class AccountController {
   //  GET /:id (get account details)

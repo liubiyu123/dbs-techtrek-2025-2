@@ -6,11 +6,9 @@ class RequestController {
   //  POST /create (create into outstanding requests & requests received - 4) 
   public createRequest = async (req: Request, res: Response) => {
     try {
-      // const request = new OutstandingRequest(req.body);
-      // const savedRequest = await request.save();
-      // res.status(201).json({ message: 'Request created successfully', data: savedRequest });
-      res.status(201).json({message:"test"})
-      
+      const request = new OutstandingRequest(req.body);
+      const savedRequest = await request.save();
+      res.status(201).json({ message: 'Request created successfully', data: savedRequest });
     } catch (error) {
       res.status(500).json({ message: 'Failed to create request', error: error});
     }
@@ -86,7 +84,22 @@ class RequestController {
     }
   }
 
-  // PUT /incoming/update (Accept/ Reject requests, DEFAULT: Pending)
+  // PUT /incoming/update/:requestId (Accept/ Reject requests, DEFAULT: Pending)
+  public updateCompanyRequest = async (req: Request, res: Response) => {
+    try {
+      const { requestId } = req.body;
+      const updatedRequest = await OutstandingRequest.findByIdAndUpdate(requestId);
+
+      if (!updatedRequest) {
+        res.status(404).json({ message: 'Request does not exist.' });
+      }
+
+      res.status(200).json({ message: 'Request updated successfully', data: updatedRequest });
+
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to delete request', error: error });
+    }
+  }
 }
 
 export default RequestController;
