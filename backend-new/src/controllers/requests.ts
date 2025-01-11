@@ -1,59 +1,69 @@
-import OutstandingRequest from '../models/requests';
+import OutstandingRequest from '../models/OutstandingRequest';
+import { Request, Response } from 'express';
 
-import {Request, Response} from "express";
 
-class RequestController {
   //  POST /create (create into outstanding requests & requests received - 4) 
-  public createRequest = async (req: Request, res: Response) => {
+  export async function createRequest(req: Request, res: Response) {
     try {
-      // const request = new OutstandingRequest(req.body);
-      // const savedRequest = await request.save();
-      // res.status(201).json({ message: 'Request created successfully', data: savedRequest });
-      res.status(201).json({message:"test"})
-      
+      console.log("Request body:", req.body);
+      const { id, companyId, requestorCompanyId, carbonUnitPrice, carbonQuantity, requestReason, requestStatus, requestType } = req.body;
+  
+      const newRequest = new OutstandingRequest({
+        id,
+        companyId,
+        requestorCompanyId,
+        carbonUnitPrice,
+        carbonQuantity,
+        requestReason,
+        requestStatus,
+        requestType,
+      });
+  
+      const createdRequest = await newRequest.save();
+      res.status(201).json({ message: 'Request created successfully', data: createdRequest });
     } catch (error) {
-      res.status(500).json({ message: 'Failed to create request', error: error});
+      console.error("Error creating request:", error);
+      res.status(500).json({ message: 'Failed to create request', error });
     }
   }
-
   // GET /:companyId (Get ALL for YOUR requests)
-  public getAllCompanyRequests = async (req: Request, res: Response) => {
+  export async function getAllCompanyRequests(req: Request, res: Response) {
     try {
       const { companyId } = req.params;
       const requests = await OutstandingRequest.find({ companyId });
       res.status(200).json({ data: requests });
 
     } catch (error) {
-      res.status(500).json({ message: 'Failed to fetch requests', error: error });
+      res.status(500).json({ message: 'Failed to fetch requests', error });
     }
   }
 
   // GET /outstanding/:companyId (Display outstanding of YOUR requests - 3)
-  public getOutstandingRequests = async (req: Request, res: Response) => {
+  export async function getOutstandingRequests(req: Request, res: Response) {
     try {
       const { companyId } = req.params;
       const requests = await OutstandingRequest.find({ companyId, status: 'outstanding' });
       res.status(200).json({ data: requests });
 
     } catch (error) {
-      res.status(500).json({ message: 'Failed to fetch outstanding requests', error: error });
+      res.status(500).json({ message: 'Failed to fetch outstanding requests', error });
     }
   }
 
   // GET /incoming/:companyId (Display incoming of OTHER requests - 3)
-  public getIncomingRequests = async (req: Request, res: Response) => {
+  export async function getIncomingRequests(req: Request, res: Response) {
     try {
       const { requestorCompanyId } = req.params;
       const requests = await OutstandingRequest.find({ requestorCompanyId, type: 'incoming' });
       res.status(200).json({ data: requests });
 
     } catch (error) {
-      res.status(500).json({ message: 'Failed to fetch incoming requests', error: error });
+      res.status(500).json({ message: 'Failed to fetch incoming requests', error});
     }
   }
   
   // PUT /edit/:requestId (Edit user’s company request)
-  public editCompanyRequest = async (req: Request, res: Response) => {
+  export async function editCompanyRequest(req: Request, res: Response) {
     try {
       const { id } = req.params;
       const updatedRequest = await OutstandingRequest.findByIdAndUpdate(id, req.body, { new: true });
@@ -65,12 +75,12 @@ class RequestController {
       res.status(200).json({ message: 'Request updated successfully', data: updatedRequest });
 
     } catch (error) {
-      res.status(500).json({ message: 'Failed to update request', error: error });
+      res.status(500).json({ message: 'Failed to update request', error});
     }
   }
 
   // DELETE /company/:requestId (Delete user’s company request)
-  public deleteCompanyRequest = async (req: Request, res: Response) => {
+  export async function deleteCompanyRequest(req: Request, res: Response) {
     try {
       const { id } = req.params;
       const deletedRequest = await OutstandingRequest.findByIdAndDelete(id);
@@ -82,11 +92,8 @@ class RequestController {
       res.status(200).json({ message: 'Request deleted successfully' });
       
     } catch (error) {
-      res.status(500).json({ message: 'Failed to delete request', error: error });
+      res.status(500).json({ message: 'Failed to delete request', error});
     }
   }
 
   // PUT /incoming/update (Accept/ Reject requests, DEFAULT: Pending)
-}
-
-export default RequestController;

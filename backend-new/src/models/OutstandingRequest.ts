@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const outstandingRequestSchema = new mongoose.Schema({
   id: {
@@ -54,4 +54,4 @@ const outstandingRequestSchema = new mongoose.Schema({
 
 const OutstandingRequest = mongoose.model('OutstandingRequest', outstandingRequestSchema);
 
-export default OutstandingRequest;
+export default OutstandingRequest
