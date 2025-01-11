@@ -84,21 +84,6 @@ class RequestController {
   }
 
   // PUT /incoming/update (Accept/ Reject requests, DEFAULT: Pending)
-  async deleteCompanyRequest(req, res) {
-    try {
-      const { id } = req.params;
-      const updatedRequest = await Request.findByIdAndUpdate(id, req.body, { new: true });
-
-      if (!deletedRequest) {
-        return res.status(404).json({ message: 'Request not found' });
-      }
-
-      res.status(200).json({ message: 'Request deleted successfully' });
-
-    } catch (error) {
-      res.status(500).json({ message: 'Failed to delete request', error: error.message });
-    }
-  }
 }
 
 export default RequestController;
