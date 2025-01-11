@@ -7,11 +7,11 @@ class UserController {
   //  POST /login
   public login = async (req: Request, res: Response) => {
     try {
-      const {username, password} = req.body
-      console.log(username, password)
-      if (username === "testuser" && password === "testpassword") {
+      const {userID, password} = req.body
+      console.log(userID, password)
+      if (userID === "testuser" && password === "testpassword") {
 
-        const payload = { username };
+        const payload = { userID };
 
         // Generate a JWT
         const token = jwt.sign(payload, this.JWT_SECRET, { expiresIn: "1h" });
@@ -21,7 +21,7 @@ class UserController {
           token: token,
         });
       } else {
-        res.status(401).json({ message: "Invalid username or password" });
+        res.status(401).json({ message: "Invalid userID or password" });
       }
 
       res.status(200).json({message:"Successfully logged in"})

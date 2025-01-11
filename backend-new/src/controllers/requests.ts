@@ -6,9 +6,9 @@ class RequestController {
   //  POST /create (create into outstanding requests & requests received - 4) 
   public createRequest = async (req: Request, res: Response) => {
     try {
-      const request = new OutstandingRequest(req.body);
-      const savedRequest = await request.save();
-      res.status(201).json({ message: 'Request created successfully', data: savedRequest });
+      // const request = new OutstandingRequest(req.body);
+      // const savedRequest = await request.save();
+      res.status(201).json({ message: 'Request created successfully', data: req.body });
     } catch (error) {
       res.status(500).json({ message: 'Failed to create request', error: error});
     }
