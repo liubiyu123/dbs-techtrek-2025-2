@@ -1,30 +1,45 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, message, Layout, Card } from "antd";
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import { useState } from "react";
 import "../App.css";
 
 const { Header, Content } = Layout;
 
 function Login() {
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Create navigate instance
+  const [userID, setUserID] = useState(null);
+  const navigate = useNavigate();
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     setLoading(true);
 
-    // Simulating an API call to check login credentials
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      // const response = await axios.post("https://your-api-url.com/login", {
+      //   userID: values.userID,
+      //   password: values.password,
+      // });
 
-      if (values.username === "admin" && values.password === "password") {
-        console.log(values.username);
-        console.log(values.password);
+      // if (response.status === 200) {
+      //   message.success("Login successful!");
+      //   navigate("/Landing"); // Redirect to the Landing page
+      // } else {
+      //   message.error("Invalid userID or password");
+      // }
+      if (Number(values.userID) === 1 && values.password === "password") {
         message.success("Login successful!");
-        navigate("/Landing");
+        const userID = Number(values.userID);
+        console.log(userID);
+        navigate("/landing", { state: { userID } });
       } else {
-        message.error("Invalid username or password");
+        message.error("Invalid userID or password");
       }
-    }, 1000);
+    } catch (error) {
+      console.error("Login failed:", error);
+      message.error("An error occurred while logging in. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -38,16 +53,16 @@ function Login() {
           <Card>
             <Form name='loginForm' onFinish={onFinish}>
               <Form.Item
-                label='Username'
-                name='username'
+                label='userID'
+                name='userID'
                 rules={[
                   {
                     required: true,
-                    message: "Please input your username!",
+                    message: "Please input your userID!",
                   },
                 ]}
               >
-                <Input placeholder='Enter your username' />
+                <Input placeholder='Enter your userID' />
               </Form.Item>
 
               <Form.Item
