@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 
 import { Button, Layout, Grid, Menu, Space, theme } from "antd";
 
-import { MenuOutlined } from "@ant-design/icons";
-
 const { Header, Content, Footer } = Layout;
 
 const NavBar = () => {

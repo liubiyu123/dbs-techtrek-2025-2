@@ -1,4 +1,3 @@
-import Layout1  from "../components/layout";
 import NavBar from "../components/navbar";
 
 const Requests = () => {
