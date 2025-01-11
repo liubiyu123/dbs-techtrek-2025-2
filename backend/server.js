@@ -1,24 +1,26 @@
 const express = require('express');
-const cors = require('cors');
-
+const mongoose = require('mongoose');
 const app = express();
+
 const PORT = 5000;
 
-// Middleware
-app.use(cors());
+// Middleware to parse JSON
 app.use(express.json());
 
-// Root Route
+// MongoDB Connection URI (Replace with your MongoDB URI)
+const MONGO_URI = 'mongodb+srv://lby19981017:liubiyu123@cluster0.6znvq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // Use your database name
+
+// Connect to MongoDB
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected!'))
+  .catch((err) => console.error('Error connecting to MongoDB:', err));
+
+// Define a simple route
 app.get('/', (req, res) => {
-    res.send('Welcome to the Express server!');
+  res.send('Hello, Express with Mongoose!');
 });
 
-// API Route
-app.get('/api', (req, res) => {
-    res.json({ message: 'Hello from the Express backend!' });
-});
-
-// Start server
+// Start the server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
