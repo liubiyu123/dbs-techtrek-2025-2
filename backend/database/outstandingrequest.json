@@ -1,0 +1,136 @@
+{
+    "outstandingrequest":[
+     {
+      "id": "1",
+      "companyId": "2045",
+      "requestorCompanyId": "2032",
+      "carbonUnitPrice": "287.36",
+      "carbonQuantity": "356",
+      "requestReason": "Request to purchase Carbon units",
+      "requestStatus": "Approved",
+      "requestType": "Buy",
+      "createdDatetime": "2024-06-06 05:51:53",
+      "updatedDatetime": "2024-07-01 00:00:00"
+     },
+     {
+      "id": "2",
+      "companyId": "2032",
+      "requestorCompanyId": "2045",
+      "carbonUnitPrice": "379.88",
+      "carbonQuantity": "279",
+      "requestReason": "Request to purchase Carbon units",
+      "requestStatus": "Rejected",
+      "requestType": "Sell",
+      "createdDatetime": "2024-06-12 08:52:01",
+      "updatedDatetime": "2024-06-18 07:42:37"
+     },
+     {
+      "id": "3",
+      "companyId": "2040",
+      "requestorCompanyId": "2042",
+      "carbonUnitPrice": "198",
+      "carbonQuantity": "284",
+      "requestReason": "Request to purchase Carbon units",
+      "requestStatus": "Pending",
+      "requestType": "Sell",
+      "createdDatetime": "2024-07-07 02:52:17",
+      "updatedDatetime": "2024-07-07 00:00:00"
+     },
+     {
+      "id": "4",
+      "companyId": "2039",
+      "requestorCompanyId": "2045",
+      "carbonUnitPrice": "400",
+      "carbonQuantity": "703",
+      "requestReason": "As discussed over the phone, request to purchase Carbon credits at $400.",
+      "requestStatus": "Approved",
+      "requestType": "Buy",
+      "createdDatetime": "2024-07-31 02:52:17",
+      "updatedDatetime": "2024-08-01 01:23:23"
+     },
+     {
+      "id": "5",
+      "companyId": "2044",
+      "requestorCompanyId": "2029",
+      "carbonUnitPrice": "106",
+      "carbonQuantity": "478",
+      "requestReason": "Request to purchase Carbon units",
+      "requestStatus": "Rejected",
+      "requestType": "Buy",
+      "createdDatetime": "2024-08-17 05:52:25",
+      "updatedDatetime": "2024-08-18 09:12:39"
+     },
+     {
+      "id": "6",
+      "companyId": "2043",
+      "requestorCompanyId": "2041",
+      "carbonUnitPrice": "293.79",
+      "carbonQuantity": "814",
+      "requestReason": "Excess carbon in 2024.",
+      "requestStatus": "Rejected",
+      "requestType": "Sell",
+      "createdDatetime": "2024-08-21 08:52:32",
+      "updatedDatetime": "2024-09-21 01:59:40"
+     },
+     {
+      "id": "7",
+      "companyId": "2037",
+      "requestorCompanyId": "2044",
+      "carbonUnitPrice": "124",
+      "carbonQuantity": "619",
+      "requestReason": "Request to purchase Carbon units",
+      "requestStatus": "Approved",
+      "requestType": "Sell",
+      "createdDatetime": "2024-08-24 11:52:40",
+      "updatedDatetime": "2024-09-04 12:30:31"
+     },
+     {
+      "id": "8",
+      "companyId": "2043",
+      "requestorCompanyId": "2042",
+      "carbonUnitPrice": "203.16",
+      "carbonQuantity": "502",
+      "requestReason": "Request to purchase Carbon units",
+      "requestStatus": "Pending",
+      "requestType": "Buy",
+      "createdDatetime": "2024-08-24 02:52:48",
+      "updatedDatetime": "2024-08-24 00:00:00"
+     },
+     {
+      "id": "9",
+      "companyId": "2037",
+      "requestorCompanyId": "2027",
+      "carbonUnitPrice": "183.48",
+      "carbonQuantity": "968",
+      "requestReason": "Get more carbon creditssssss",
+      "requestStatus": "Pending",
+      "requestType": "Buy",
+      "createdDatetime": "2024-09-18 05:52:56",
+      "updatedDatetime": "2024-09-18 00:00:00"
+     },
+     {
+      "id": "10",
+      "companyId": "2033",
+      "requestorCompanyId": "2034",
+      "carbonUnitPrice": "550",
+      "carbonQuantity": "1080",
+      "requestReason": "Request to purchase Carbon units",
+      "requestStatus": "Pending",
+      "requestType": "Sell",
+      "createdDatetime": "2024-12-19 08:53:04",
+      "updatedDatetime": "2024-12-19 00:00:00"
+     },
+     {
+      "id": "12",
+      "companyId": "2000",
+      "requestorCompanyId": "2025",
+      "carbonUnitPrice": "500.25",
+      "carbonQuantity": "3.5",
+      "requestReason": "Projected excess carbon credits for 2025",
+      "requestStatus": "Pending",
+      "requestType": "Buy",
+      "createdDatetime": "2025-01-11 09:01:00",
+      "updatedDatetime": "2025-01-11 09:01:02"
+     }
+    ]
+    }
