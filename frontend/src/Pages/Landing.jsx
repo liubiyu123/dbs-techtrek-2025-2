@@ -27,13 +27,28 @@ const Landing = () => {
     const fetchCompanyData = async () => {
       try {
         const token = localStorage.getItem('token');
+        if (!token) {
+          console.error('No token found');
+          return;
+        }
+
         const response = await fetch('/api/company/balance', {
+          method: 'GET',
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
           }
         });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch company data');
+        }
+
         const data = await response.json();
-        setCompanyData(data);
+        setCompanyData({
+          companyName: data.companyName,
+          carbonBalance: data.carbonBalance,
+          cashBalance: data.cashBalance
+        });
       } catch (error) {
         console.error('Error fetching company data:', error);
       }
