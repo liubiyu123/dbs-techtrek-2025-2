@@ -68,8 +68,8 @@ const Landing = () => {
 
   return (
     <Layout>
+	  <NavBar/>
       <Content style={{ padding: '24px' }}>
-		<NavBar/>
         <Card 
           style={{ 
             marginBottom: '24px',
