@@ -25,6 +25,7 @@ function Login() {
       //   navigate("/Landing"); // Redirect to the Landing page
       // } else {
       //   message.error("Invalid userID or password");
+      //   alert("Invalid userID or password");
       // }
       if (Number(values.userID) === 1 && values.password === "password") {
         message.success("Login successful!");
@@ -33,6 +34,7 @@ function Login() {
         navigate("/landing", { state: { userID } });
       } else {
         message.error("Invalid userID or password");
+        alert("Invalid userID or password");
       }
     } catch (error) {
       console.error("Login failed:", error);
