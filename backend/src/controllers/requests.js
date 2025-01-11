@@ -1,10 +1,12 @@
+import RequestModel from "../models/requests";
+
 class RequestController {
   /***
    *  Create new company requests into outstandingRequests & requestReceived tables
    */
-  public createRequest = () => {
+  public createRequest = async () => {
     try{
-      console.log("TEST")
+      new RequestModel()
     }catch (e) {
       console.log(e)
     }
@@ -13,9 +15,9 @@ class RequestController {
   /***
    *  Get all requests made by the company
    */
-  public getAllCompanyRequests = () => {
+  public getAllCompanyRequests = async () => {
     try{
-      console.log("TEST")
+      await RequestModel.findById()
     }catch (e) {
       console.log(e)
     }
