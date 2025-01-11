@@ -1,0 +1,92 @@
+services:
+  frontend:
+    container_name: asr-next-app
+    build:
+      context: frontend
+    restart: no
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    depends_on:
+      backend:
+        condition: service_healthy
+    develop:
+      watch:
+        - path: ./frontend/package.json
+          action: rebuild
+        - path: ./frontend/next.config.mjs
+          action: rebuild
+        - path: ./frontend
+          action: rebuild # need to rebuild since Next14 runs standalone
+          ignore:
+            - node_modules/
+
+  backend:
+    container_name: asr-node-service
+    env_file:
+      - ./backend/.env
+      - .env
+    build:
+      context: backend
+      args:
+        NODE_PORT: ${SERVER_PORT}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/node-service # bind mount for dev hot-reload
+      - ${ASR_BASE_DIRECTORY}/recordings:/node-service/recordings
+      - ${ASR_BASE_DIRECTORY}/input/:/node-service/asr/input
+      - ${ASR_BASE_DIRECTORY}/temp/:/node-service/asr/temp
+      - ${ASR_BASE_DIRECTORY}/output/:/node-service/asr/output
+      - ${ASR_BASE_DIRECTORY}/logs/:/node-service/asr/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://backend:5001/api/status/health"]
+      interval: 5s
+      timeout: 25s
+      retries: 3
+
+  mongodb:
+    container_name: asr-mongo-database
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    volumes:
+      - mongo-data:/data/db
+
+  abx-decoder-apr2024-eng:
+    container_name: asr-decoder
+    image: ntuspeechlab.azurecr.io/offline-abx-decoding-sdk:kilsa_v9_itn_v1.2_outputdir
+    platform: linux/amd64
+    restart: unless-stopped
+    user: root
+    volumes:
+      - ./asr-decoder/models:/workspace/models # fixed mapping
+      - ${ASR_BASE_DIRECTORY}/input/:/workspace/input
+      - ${ASR_BASE_DIRECTORY}/temp/:/workspace/temp
+      - ${ASR_BASE_DIRECTORY}/output/:/workspace/output
+      - ${ASR_BASE_DIRECTORY}/logs/:/workspace/logs
+    environment:
+      - SELECTED_MODEL=wenet_Sgeng_16khz_12-Nov-2022_train-nov-12_v1
+      - SAMPLING_RATE=16000
+      - SENDING_STATUS=yes
+      - STATUS_SERVERS=http://backend:5001/api/status/update
+      - ERROR_ENDPOINT=
+      - USING_SUD=no
+      - SUD_API=https://cs-sud.speechlab.sg/backend_predict
+      - ITN_API=http://172.21.47.108:5001/itn
+      - RENAME_FILE=no
+      - UPDATE_SPEAKER=no
+      - OS_TYPE=linux
+      - USING_SDK=yes
+      - SDK_VERSION=pytorch
+      - USING_WHISPER=no
+      - MAN_OUTPUT=yes
+      - USING_ASR_VAD=no
+      - CONSOLIDATE_TRANS=no
+
+    command: /workspace/entry_point.sh
+
+volumes:
+  mongo-data: {}

@@ -1,6 +1,10 @@
-import requestRoutes from './src/routes/requests'
-const express = require('express');
-const mongoose = require('mongoose');
+import requestRoutes from './src/routes/requests.js'
+
+import { createRequire } from 'module';
+import express from "express";
+import mongoose from "mongoose";
+const require = createRequire(import.meta.url);
+
 const app = require('./src/app');
 
 const PORT = 5001;
