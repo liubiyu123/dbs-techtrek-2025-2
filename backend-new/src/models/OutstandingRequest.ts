@@ -5,16 +5,15 @@ const outstandingRequestSchema = new mongoose.Schema({
     type: Number,
     required: true,
     unique: true,
-    auto: true,
   },
   companyId: {
-    type: mongoose.Schema.Types.Number,
-    ref: 'CompanyAccount',
+    type: String, // Changed from mongoose.Schema.Types.Number to String
+    ref: "CompanyAccount",
     required: true,
   },
   requestorCompanyId: {
-    type: mongoose.Schema.Types.Number,
-    ref: 'CompanyAccount',
+    type: String, // Changed from mongoose.Schema.Types.Number to String
+    ref: "CompanyAccount",
     required: true,
   },
   carbonUnitPrice: {
@@ -52,6 +51,7 @@ const outstandingRequestSchema = new mongoose.Schema({
   },
 });
 
-const OutstandingRequest = mongoose.model('OutstandingRequest', outstandingRequestSchema);
+// Create model
+const OutstandingRequest = mongoose.model("OutstandingRequest", outstandingRequestSchema);
 
-export default OutstandingRequest
+export default OutstandingRequest;

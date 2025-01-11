@@ -1,5 +1,4 @@
 import express from "express";
-// import userRoutes from "./src/routes/users";  // If using ES Modules (with "type": "module" in package.json)
 import requestRoutes from "./routes/requests";  // If using ES Modules (with "type": "module" in package.json)
 // const express = require('express'); // If using CommonJS syntax (default)
 

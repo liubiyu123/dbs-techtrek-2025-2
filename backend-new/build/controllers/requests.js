@@ -46,8 +46,7 @@ exports.getIncomingRequests = getIncomingRequests;
 exports.editCompanyRequest = editCompanyRequest;
 exports.deleteCompanyRequest = deleteCompanyRequest;
 var OutstandingRequest_1 = __importDefault(require("../models/OutstandingRequest"));
-//  POST /create (create into outstanding requests & requests received - 4) 
-function createRequest(req, res) {
+function createRequest(req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
         var _a, id, companyId, requestorCompanyId, carbonUnitPrice, carbonQuantity, requestReason, requestStatus, requestType, newRequest, createdRequest, error_1;
         return __generator(this, function (_b) {
@@ -74,7 +73,7 @@ function createRequest(req, res) {
                 case 2:
                     error_1 = _b.sent();
                     console.error("Error creating request:", error_1);
-                    res.status(500).json({ message: 'Failed to create request', error: error_1 });
+                    next(error_1); // Pass the error to the Express error handler
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }

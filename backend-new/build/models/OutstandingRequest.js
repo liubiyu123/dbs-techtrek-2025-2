@@ -9,16 +9,15 @@ var outstandingRequestSchema = new mongoose_1.default.Schema({
         type: Number,
         required: true,
         unique: true,
-        auto: true,
     },
     companyId: {
-        type: mongoose_1.default.Schema.Types.Number,
-        ref: 'CompanyAccount',
+        type: String, // Changed from mongoose.Schema.Types.Number to String
+        ref: "CompanyAccount",
         required: true,
     },
     requestorCompanyId: {
-        type: mongoose_1.default.Schema.Types.Number,
-        ref: 'CompanyAccount',
+        type: String, // Changed from mongoose.Schema.Types.Number to String
+        ref: "CompanyAccount",
         required: true,
     },
     carbonUnitPrice: {
@@ -55,5 +54,6 @@ var outstandingRequestSchema = new mongoose_1.default.Schema({
         set: function () { return Date.now(); },
     },
 });
-var OutstandingRequest = mongoose_1.default.model('OutstandingRequest', outstandingRequestSchema);
+// Create model
+var OutstandingRequest = mongoose_1.default.model("OutstandingRequest", outstandingRequestSchema);
 exports.default = OutstandingRequest;

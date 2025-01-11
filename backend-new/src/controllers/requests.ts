@@ -1,31 +1,32 @@
 import OutstandingRequest from '../models/OutstandingRequest';
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
+export async function createRequest(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    console.log("Request body:", req.body);
 
-  //  POST /create (create into outstanding requests & requests received - 4) 
-  export async function createRequest(req: Request, res: Response) {
-    try {
-      console.log("Request body:", req.body);
-      const { id, companyId, requestorCompanyId, carbonUnitPrice, carbonQuantity, requestReason, requestStatus, requestType } = req.body;
-  
-      const newRequest = new OutstandingRequest({
-        id,
-        companyId,
-        requestorCompanyId,
-        carbonUnitPrice,
-        carbonQuantity,
-        requestReason,
-        requestStatus,
-        requestType,
-      });
-  
-      const createdRequest = await newRequest.save();
-      res.status(201).json({ message: 'Request created successfully', data: createdRequest });
-    } catch (error) {
-      console.error("Error creating request:", error);
-      res.status(500).json({ message: 'Failed to create request', error });
-    }
+    const { id, companyId, requestorCompanyId, carbonUnitPrice, carbonQuantity, requestReason, requestStatus, requestType } = req.body;
+
+    // Assuming OutstandingRequest is a Mongoose model
+    const newRequest = new OutstandingRequest({
+      id,
+      companyId,
+      requestorCompanyId,
+      carbonUnitPrice,
+      carbonQuantity,
+      requestReason,
+      requestStatus,
+      requestType,
+    });
+
+    const createdRequest = await newRequest.save();
+    res.status(201).json({ message: 'Request created successfully', data: createdRequest });
+  } catch (error) {
+    console.error("Error creating request:", error);
+    next(error); // Pass the error to the Express error handler
   }
+}
+
   // GET /:companyId (Get ALL for YOUR requests)
   export async function getAllCompanyRequests(req: Request, res: Response) {
     try {
