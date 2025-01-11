@@ -6,7 +6,7 @@ import RequestForm from '../components/RequestForm';
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
-const LandingPage = () => {
+const Landing = () => {
   const [companyData, setCompanyData] = useState({
     companyName: 'Company A',
     carbonBalance: 100,
@@ -124,4 +124,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default Landing;
