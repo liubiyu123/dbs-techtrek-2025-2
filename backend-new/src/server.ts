@@ -11,7 +11,7 @@ const port = 5001;
 app.use(express.json());
 
 // Basic route for testing
-app.use('/api/login', userRoutes)
+app.use('/api/users', userRoutes)
 app.use('/api/requests', requestRoutes)
 app.use('/api/account', accountRoutes)
 
